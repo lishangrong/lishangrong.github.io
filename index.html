@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>lisr</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="lisr">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="lisr">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="lisr">
 <meta name="twitter:description">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="lisr" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -31,7 +31,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">lisr</a>
       </h1>
       
     </div>
@@ -65,13 +65,13 @@
 
       </header>
     
-    <time class="article-date" datetime="2016-01-26T11:28:30.815Z" itemprop="datePublished">01-26-2016</time>
+    <time class="article-date" datetime="2016-01-26T12:15:19.838Z" itemprop="datePublished">01-26-2016</time>
     
   </div>
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="this_is_a_h2_title"><a href="#this_is_a_h2_title" class="headerlink" title="this is a h2 title."></a>this is a h2 title.</h2><figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> <span class="built_in">date</span> = <span class="literal">new</span> <span class="built_in">Date</span>();</span><br></pre></td></tr></table></figure>
+        <h2 id="chart-js__u57FA_u4E8EH5_u7684canvas_uFF0C_u67096_u4E2D_u56FE_u8868_u7C7B_u578B_uFF08_u6298_u7EBF_u56FE_uFF0C_u6761_u5F62_u56FE_uFF0C_u96F7_u8FBE_u56FE_uFF0C_u997C_u56FE_uFF0C_u67F1_u72B6_u56FE_u548C_u6781_u5730_u533A_u57DF_u533A_uFF09"><a href="#chart-js__u57FA_u4E8EH5_u7684canvas_uFF0C_u67096_u4E2D_u56FE_u8868_u7C7B_u578B_uFF08_u6298_u7EBF_u56FE_uFF0C_u6761_u5F62_u56FE_uFF0C_u96F7_u8FBE_u56FE_uFF0C_u997C_u56FE_uFF0C_u67F1_u72B6_u56FE_u548C_u6781_u5730_u533A_u57DF_u533A_uFF09" class="headerlink" title="chart.js 基于H5的canvas，有6中图表类型（折线图，条形图，雷达图，饼图，柱状图和极地区域区）"></a>chart.js 基于H5的canvas，有6中图表类型（折线图，条形图，雷达图，饼图，柱状图和极地区域区）</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">（1）柱状图</span><br><span class="line"> html:</span><br><span class="line"> 	<span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="title">head</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line">	    	 <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></span><br><span class="line">	    	<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/Chart.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">	 		<span class="tag">&lt;<span class="title">title</span>&gt;</span>bar chart<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="title">body</span>&gt;</span> 		</span><br><span class="line">		 	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"bar-chart"</span>&gt;</span></span><br><span class="line">		 		<span class="tag">&lt;<span class="title">h5</span> <span class="attribute">class</span>=<span class="value">"bar-title"</span>&gt;</span><span class="tag">&lt;/<span class="title">h5</span>&gt;</span></span><br><span class="line">		 		<span class="tag">&lt;<span class="title">canvas</span> <span class="attribute">id</span>=<span class="value">"bar"</span> <span class="attribute">width</span>=<span class="value">400</span> <span class="attribute">height</span>=<span class="value">400</span>&gt;</span><span class="tag">&lt;/<span class="title">canvas</span>&gt;</span></span><br><span class="line">		 		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"legend"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">		 	<span class="tag">&lt;/<span class="title">div</span>&gt;</span> 	</span><br><span class="line">	 	<span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> 	css:</span><br><span class="line">	  .bar-legend li span &#123;</span><br><span class="line">            width: 1em;</span><br><span class="line">            height: 1em;</span><br><span class="line">            display: inline-block;</span><br><span class="line">            margin-right: 5px;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">      .bar-legend &#123;</span><br><span class="line">            list-style: none;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
