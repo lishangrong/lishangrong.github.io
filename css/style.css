@@ -214,6 +214,12 @@ a:hover {
 #header {
   text-shadow: 0 0 1px #fff;
   margin: 50px auto;
+  background: url("../image/bg/14135C034-10_02.jpg") 0 0 no-repeat;
+  height: 300px;
+}
+#header .alignleft {
+  margin-top: 125px;
+  margin-left: 200px;
 }
 #header a {
   color: #999;
@@ -236,6 +242,8 @@ a:hover {
 #header #main-nav {
   font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   line-height: 2.5em;
+  margin-top: 215px;
+  margin-right: 20px;
 }
 #header #main-nav ul {
   list-style: none;
