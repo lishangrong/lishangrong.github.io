@@ -1,99 +1,298 @@
-<!DOCTYPE HTML>
-<html>
+
+ <!DOCTYPE HTML>
+<html >
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   
-  <title>chart.js学习总结 | 懒荣の博客</title>
-  <meta name="author" content="lisr">
-  
-  <meta name="description" content="chart.js 基于H5的canvas,轻量级的图表插件。有6中图表类型：折线图、条形图、雷达图、饼图、柱状图、极地区域图chartjs 官方网站chartjs中文网站
+    <title>chart.js学习总结 | 懒荣の博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="lisr">
+    
+    <meta name="description" content="chart.js 基于H5的canvas,轻量级的图表插件。有6中图表类型：折线图、条形图、雷达图、饼图、柱状图、极地区域图chartjs 官方网站chartjs中文网站
 
 关于柱状图的绘制，追加 、更新、删除数据等操作的总结12345678910111213141516html:	&amp;lt;!DOC">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml## RSS address." title="懒荣の博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/pacman.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/fish_footer.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/fish_footer.jpg">
+    
 
-  <meta property="og:title" content="chart.js学习总结"/>
-  <meta property="og:site_name" content="懒荣の博客"/>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <!-- 标签云侵入样式 -->
+  <style>
+    .tagcloudlist {position:relative; height:300px;}
+    .tagcloudlist  a {position:absolute; top:0px; left:0px;  text-decoration:none; padding: 3px 6px; }
+    .tagcloudlist  a:hover {border: 1px solid #eee; background: #000; }
+    
+    .ac_results {
+            padding: 0px;
+            border: 1px solid black;
+            background-color: white;
+            overflow: hidden;
+            z-index: 99999;
+        }
+    .ac_results ul {
+        width: 100%;
+        list-style-position: outside;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .ac_results li {
+        margin: 0px;
+        padding: 2px 5px;
+        cursor: default;
+        display: block;
+        font: menu;
+        font-size: 12px;
+        line-height: 16px;
+        overflow: hidden;
+    }
+    .ac_loading {
+        background: #FFF;
+    }
+    .ac_odd {
+        background-color: #EEE;
+    }
+    .ac_over {
+        background-color: #AAA;
+        color: #FFF;
+    }
 
-  
-    <meta property="og:image" content="undefined"/>
-  
+  </style>
 
-  <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="懒荣の博客" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <script src="/js/jquery.min.js"></script>
-  
-<script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-45019001-1', 'topdna.org');
-  ga('send', 'pageview');
-
-</script>
-
-
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/autocomplete.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/miaov.js"></script>
 </head>
 
-
-<body>
-  <!--[if lte IE 8]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0027_Simplified Chinese.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." style='margin-left:auto;margin-right:auto;display: block;'/></a></div> <![endif]-->
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">懒荣の博客</a></h1>
-  <h2><a href="/">lishangrong&#39;s blog</a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">首页</a></li>
-    
-      <li><a href="/categories/essay/">随感</a></li>
-    
-      <li><a href="/categories/tech/">技术</a></li>
-    
-      <li><a href="/categories/life/">生活</a></li>
-    
-      <li><a href="/archives">归档</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
+  <body>
     <header>
-      
-        <time datetime="2016-01-28T12:13:20.239Z"><a href="/2016/01/28/20160128-chartjs(bar)/">2016-01-28</a></time>
-      
-      
-  
-    <h1 class="title">chart.js学习总结</h1>
-  
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/fish_font.jpg" alt="懒荣の博客" title="懒荣の博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="懒荣の博客">懒荣の博客</a></h1>
+				<h2 class="blog-motto">lishangrong&#39;s blog</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/about">About Me</a></li>
+					
+					
+					<li> <a href="/atom.xml">RSS</a> </li>
+
+					<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+
+				<li>
+					
+					 <form id="searchform" class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+                    <label>Search</label>
+                    <input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+               		 </form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
 
     </header>
-    <div class="entry">
-      
-        <p>chart.js 基于H5的canvas,轻量级的图表插件。<br>有6中图表类型：折线图、条形图、雷达图、饼图、柱状图、极地区域图<br><a href="http://www.chartjs.org" target="_blank" rel="external">chartjs 官方网站</a><br><a href="http://www.bootcss.com/p/chart.js/" target="_blank" rel="external">chartjs中文网站</a></p>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/01/28/20160128-chartjs(bar)/" title="chart.js学习总结" itemprop="url">chart.js学习总结</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="lisr">lisr</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-01-28T12:13:20.239Z" itemprop="datePublished">2016-01-28</time>
+    更新日期:<time datetime="2016-01-28T12:13:20.232Z" itemprop="dateModified">2016-01-28</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u5173_u4E8E_u67F1_u72B6_u56FE_u7684_u7ED8_u5236_uFF0C_u8FFD_u52A0__u3001_u66F4_u65B0_u3001_u5220_u9664_u6570_u636E_u7B49_u64CD_u4F5C_u7684_u603B_u7ED3"><span class="toc-number">1.</span> <span class="toc-text">关于柱状图的绘制，追加 、更新、删除数据等操作的总结</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u6548_u679C_u5982_u56FE"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">效果如图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u8FFD_u52A0_u6570_u636E"><span class="toc-number">1.0.1.</span> <span class="toc-text">追加数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u6548_u679C_u5982_u56FE-1"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">效果如图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u5220_u9664_u6570_u636E"><span class="toc-number">1.0.2.</span> <span class="toc-text">删除数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u6548_u679C_u5982_u56FE-2"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">效果如图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u4FEE_u6539labels_u4E2D_u7684_u67D0_u4E2A_u503C"><span class="toc-number">1.0.3.</span> <span class="toc-text">修改labels中的某个值</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u6548_u679C_u5982_u56FE-3"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">效果如图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u4FEE_u6539_u67D0_u4E2A_u6570_u636E"><span class="toc-number">1.0.4.</span> <span class="toc-text">修改某个数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u6548_u679C_u5982_u56FE-4"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">效果如图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u4FEE_u6539_u67D0_u4E2A_u6570_u636E_u7684_u586B_u5145_u8272"><span class="toc-number">1.0.5.</span> <span class="toc-text">修改某个数据的填充色</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u6548_u679C_u5982_u56FE-5"><span class="toc-number">1.0.5.1.</span> <span class="toc-text">效果如图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u4FEE_u6539_u56FE_u4F8B"><span class="toc-number">1.0.6.</span> <span class="toc-text">修改图例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u6548_u679C_u5982_u56FE-6"><span class="toc-number">1.0.6.1.</span> <span class="toc-text">效果如图</span></a></li></ol></li></ol></li></ol></li></ol>
+		</div>
+		
+		<p>chart.js 基于H5的canvas,轻量级的图表插件。<br>有6中图表类型：折线图、条形图、雷达图、饼图、柱状图、极地区域图<br><a href="http://www.chartjs.org" target="_blank" rel="external">chartjs 官方网站</a><br><a href="http://www.bootcss.com/p/chart.js/" target="_blank" rel="external">chartjs中文网站</a></p>
 <hr>
 <h2 id="u5173_u4E8E_u67F1_u72B6_u56FE_u7684_u7ED8_u5236_uFF0C_u8FFD_u52A0__u3001_u66F4_u65B0_u3001_u5220_u9664_u6570_u636E_u7B49_u64CD_u4F5C_u7684_u603B_u7ED3"><a href="#u5173_u4E8E_u67F1_u72B6_u56FE_u7684_u7ED8_u5236_uFF0C_u8FFD_u52A0__u3001_u66F4_u65B0_u3001_u5220_u9664_u6570_u636E_u7B49_u64CD_u4F5C_u7684_u603B_u7ED3" class="headerlink" title="关于柱状图的绘制，追加 、更新、删除数据等操作的总结"></a>关于柱状图的绘制，追加 、更新、删除数据等操作的总结</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">html:</span><br><span class="line">	<span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="title">head</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line">	    	 <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></span><br><span class="line">	    	<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/Chart.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">	 		<span class="tag">&lt;<span class="title">title</span>&gt;</span>bar chart<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="title">body</span>&gt;</span> 		</span><br><span class="line">		 	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"bar-chart"</span>&gt;</span></span><br><span class="line">		 		<span class="tag">&lt;<span class="title">h5</span> <span class="attribute">class</span>=<span class="value">"bar-title"</span>&gt;</span>XX饮料营业额情况一览表<span class="tag">&lt;/<span class="title">h5</span>&gt;</span></span><br><span class="line">		 		<span class="tag">&lt;<span class="title">canvas</span> <span class="attribute">id</span>=<span class="value">"bar"</span> <span class="attribute">width</span>=<span class="value">400</span> <span class="attribute">height</span>=<span class="value">400</span>&gt;</span><span class="tag">&lt;/<span class="title">canvas</span>&gt;</span></span><br><span class="line">		 		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"legend"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">		 	<span class="tag">&lt;/<span class="title">div</span>&gt;</span> 	</span><br><span class="line">	 	<span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">css</span>:</span><br><span class="line">    <span class="class">.bar-legend</span> <span class="tag">li</span> <span class="tag">span</span> <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">1em</span></span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">1em</span></span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">margin-right</span>:<span class="value"> <span class="number">5px</span></span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="class">.bar-legend</span> <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">list-style</span>:<span class="value"> none</span></span>;</span><br><span class="line">    &#125;</span></span><br></pre></td></tr></table></figure>
@@ -114,75 +313,61 @@
 <h5 id="u6548_u679C_u5982_u56FE-5"><a href="#u6548_u679C_u5982_u56FE-5" class="headerlink" title="效果如图"></a>效果如图</h5><p><img src="/image/chart/bar6.png" alt="Alt bar"></p>
 <h4 id="u4FEE_u6539_u56FE_u4F8B"><a href="#u4FEE_u6539_u56FE_u4F8B" class="headerlink" title="修改图例"></a>修改图例</h4><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bar.datasets[0].fillColor </span>= <span class="string">'#926dde'</span><span class="comment">;</span></span><br><span class="line"><span class="keyword">bar.datasets[0].label </span>= <span class="string">'日剩余量'</span><span class="comment">;</span></span><br><span class="line"><span class="label">var</span> <span class="keyword">bars </span>= <span class="keyword">bar.datasets[0].bars;</span><br><span class="line"></span><span class="label">for</span>(var i = <span class="number">0</span><span class="comment">; i &lt; bars.length; i++) &#123;</span></span><br><span class="line">    <span class="keyword">bars[i].fillColor </span>= <span class="string">'#926dde'</span><span class="comment">;</span></span><br><span class="line">    <span class="keyword">bars[i].datasetLabel </span>= <span class="string">'日剩余量'</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">bar.update();</span><br><span class="line"></span><span class="label">legend.innerHTML</span> = <span class="keyword">bar.generateLegend();</span></span><br></pre></td></tr></table></figure>
 <h5 id="u6548_u679C_u5982_u56FE-6"><a href="#u6548_u679C_u5982_u56FE-6" class="headerlink" title="效果如图"></a>效果如图</h5><p><img src="/image/chart/bar7.png" alt="Alt bar"></p>
-
-      
-    </div>
-    <footer>
-      
-
-        
-        
-
-        
-          <div class="copyright">
-            
-            
-              <span class="from-link">
-                <em>本文链接地址:</em>
-                <a href="/2016/01/28/20160128-chartjs(bar)/">
-                  http://yoursite.com/2016/01/28/20160128-chartjs(bar)/
-                </a>
-              </span>
-            
-          </div>
-        
-        
-        
-        
-  <div class="addthis addthis_toolbox addthis_default_style">
-    
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_sinaweibo_like"></a>
-    
-    
-      <a class="addthis_button_linkedin"></a>
-    
-    
-    
-    <a class="addthis_counter addthis_pill_style"></a>
-  </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="text" name="q" results="0" placeholder="搜尋">
-    <i class="icon-search"></i>
-    <input type="hidden" name="q" value="site:yoursite.com">
-  </form>
-</div>
-
   
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2016/01/28/20160128-chartjs(bar)/" data-title="chart.js学习总结 | 懒荣の博客" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016/01/28/20160128-chartjs(bar)/" data-title="chart.js学习总结" data-url="http://yoursite.com/2016/01/28/20160128-chartjs(bar)/"></div>
+<!-- 多说评论框 end -->
+</div>  
+
+<script src="/js/snowstorm-min.js"></script>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"2","bdPos":"right","bdTop":"100"},"image":{"viewList":["weixin","qzone","tsina","tqq","renren"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","qzone","tsina","tqq","renren"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u5173_u4E8E_u67F1_u72B6_u56FE_u7684_u7ED8_u5236_uFF0C_u8FFD_u52A0__u3001_u66F4_u65B0_u3001_u5220_u9664_u6570_u636E_u7B49_u64CD_u4F5C_u7684_u603B_u7ED3"><span class="toc-number">1.</span> <span class="toc-text">关于柱状图的绘制，追加 、更新、删除数据等操作的总结</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u6548_u679C_u5982_u56FE"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">效果如图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u8FFD_u52A0_u6570_u636E"><span class="toc-number">1.0.1.</span> <span class="toc-text">追加数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u6548_u679C_u5982_u56FE-1"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">效果如图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u5220_u9664_u6570_u636E"><span class="toc-number">1.0.2.</span> <span class="toc-text">删除数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u6548_u679C_u5982_u56FE-2"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">效果如图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u4FEE_u6539labels_u4E2D_u7684_u67D0_u4E2A_u503C"><span class="toc-number">1.0.3.</span> <span class="toc-text">修改labels中的某个值</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u6548_u679C_u5982_u56FE-3"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">效果如图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u4FEE_u6539_u67D0_u4E2A_u6570_u636E"><span class="toc-number">1.0.4.</span> <span class="toc-text">修改某个数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u6548_u679C_u5982_u56FE-4"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">效果如图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u4FEE_u6539_u67D0_u4E2A_u6570_u636E_u7684_u586B_u5145_u8272"><span class="toc-number">1.0.5.</span> <span class="toc-text">修改某个数据的填充色</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u6548_u679C_u5982_u56FE-5"><span class="toc-number">1.0.5.1.</span> <span class="toc-text">效果如图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u4FEE_u6539_u56FE_u4F8B"><span class="toc-number">1.0.6.</span> <span class="toc-text">修改图例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u6548_u679C_u5982_u56FE-6"><span class="toc-number">1.0.6.1.</span> <span class="toc-text">效果如图</span></a></li></ol></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
 
   <div>
+<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.js"></script>
 </div>
 
 
+  <div class="music">
+<p class="asidetitle">Music</p>
+<div class="music_player clearfix">
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=45521081&sid=381307&mode=js"></script>
+</div>
+</div>
+
   
-<div class="widget tag">
-  <h3 class="title">最新文章</h3>
+
+  
+<div class="categorieslist">
+<p class="asidetitle">Recent Posts</p>
   <ul class="entry">
     
       <li>
@@ -192,26 +377,212 @@
   </ul>
 </div>
 
-</aside>
-    <div class="clearfix"></div>
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">Archives</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li></ul>
   </div>
-  <div id="go-pg-top"><i class="icon-arrow-up"></i></div>
-  <footer id="footer" class="inner"><div class="alignleft">
+
+
   
-  &copy; 2016 lisr
-  
+<div class="widget">
+  <!--<p class="asidetitle">Recent Comments</p>-->
+    
+<!--<ul class="entry ds-recent-comments" data-num-items="1" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="70"></ul> -->
 </div>
-<div class="clearfix"></div></footer>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+
+
+  
+
+
+  <div class="linklist">
+<h3 rel="grow" class="grow asidetitle">Blogroll</h3>
+<ul class="entry">
+<li><a href="http://www.cnblogs.com/voidy/" title="voidy's Blog">小鱼</a></li>
+<li><a href="http://haodong.net.cn/" title="haodong">耗子</a></li>
+<li><a href="http://lanlazy.gitcafe.io/" title="lanlazy">兰懒懒</a></li>
+<li><a href="http://chenxiaohua.net/" >努力加餐饭</a></li>
+<li><a href="http://www.techug.com/" >程序师</a></li>
+<li><a href="http://coolshell.cn/" >酷壳</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/" >阮一峰</a></li>
+<li><a href="http://www.chenshake.com/" >陈沙克</a></li>
+<li><a href="http://mindhacks.cn/" >刘未鹏</a></li>
+<li><a href="http://www.cnblogs.com/gorlf/">刘飞</a></li>
+<li><a href="http://rico93.xyz/">Rico</a></li>
+</ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://yoursite.com" target="_blank" title="lisr">lisr</a>
+		
+		</p>
+</div>
+</footer>
+    
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"null"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
 
 
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript" charset="utf-8" src="/js/page.js"></script>
 
-</body>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9723e4a6c94c2638d915c2747e92aef9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 
+
+
+<div id="totop" style="position:fixed;bottom:50px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+<script src="/js/scrolltop.js"></script>
+
+  </body>
 </html>
+
+
+<a href="https://github.com/lishangrong"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
