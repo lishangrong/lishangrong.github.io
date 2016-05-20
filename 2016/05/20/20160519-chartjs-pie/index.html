@@ -278,8 +278,8 @@ html:
       <a href="http://yoursite.com" title="lisr">lisr</a>
     </p>
   <p class="article-time">
-    <time datetime="2016-05-20T01:46:30.804Z" itemprop="datePublished">2016-05-20</time>
-    更新日期:<time datetime="2016-05-20T01:46:30.803Z" itemprop="dateModified">2016-05-20</time>
+    <time datetime="2016-05-20T06:43:03.634Z" itemprop="datePublished">2016-05-20</time>
+    更新日期:<time datetime="2016-05-20T06:43:03.632Z" itemprop="dateModified">2016-05-20</time>
     
   </p>
 </header>
@@ -318,8 +318,7 @@ html:
 <h5 id="u6548_u679C_u5982_u56FE-4"><a href="#u6548_u679C_u5982_u56FE-4" class="headerlink" title="效果如图"></a>效果如图</h5><p><img src="/image/chart/pie5.png" alt="如图5 "></p>
 <h4 id="u4FEE_u6539_u67D0_u4E2A_u6570_u636E"><a href="#u4FEE_u6539_u67D0_u4E2A_u6570_u636E" class="headerlink" title="修改某个数据"></a>修改某个数据</h4><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 将<span class="number">3</span>月的数据<span class="string">[100]</span>修改为<span class="string">[33]</span></span><br><span class="line">pie.segments<span class="string">[2]</span>.value = <span class="number">33</span>;</span><br><span class="line">pie.update();</span><br></pre></td></tr></table></figure>
 <h5 id="u6548_u679C_u5982_u56FE-5"><a href="#u6548_u679C_u5982_u56FE-5" class="headerlink" title="效果如图"></a>效果如图</h5><p><img src="/image/chart/pie6.png" alt="如图6 "></p>
-<h4 id="u4FEE_u6539_u67D0_u4E2A_u6570_u636E_u7684_u586B_u5145_u8272"><a href="#u4FEE_u6539_u67D0_u4E2A_u6570_u636E_u7684_u586B_u5145_u8272" class="headerlink" title="修改某个数据的填充色"></a>修改某个数据的填充色</h4><p>要想修改每个饼状的填充色，则遍历所有的数据，修改每个数据的fillColor即可。<br>修改完填充色后要重新获取图例情报并设置。</p>
-<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 修改4月的填充色</span><br><span class="line">   pie.segments[3].fillColor = '#F8E59B'<span class="comment">;</span></span><br><span class="line">   pie.segments[3].highlightColor = '#F8E59B'<span class="comment">;</span></span><br><span class="line">   pie.update()<span class="comment">;</span></span><br><span class="line">   legend.innerHTML = pie.generateLegend()<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<h4 id="u4FEE_u6539_u67D0_u4E2A_u6570_u636E_u7684_u586B_u5145_u8272"><a href="#u4FEE_u6539_u67D0_u4E2A_u6570_u636E_u7684_u586B_u5145_u8272" class="headerlink" title="修改某个数据的填充色"></a>修改某个数据的填充色</h4><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 修改4月的填充色</span><br><span class="line">   pie.segments[3].fillColor = '#F8E59B'<span class="comment">;</span></span><br><span class="line">   pie.segments[3].highlightColor = '#F8E59B'<span class="comment">;</span></span><br><span class="line">   pie.update()<span class="comment">;</span></span><br><span class="line">   legend.innerHTML = pie.generateLegend()<span class="comment">;</span></span><br></pre></td></tr></table></figure>
 <h5 id="u6548_u679C_u5982_u56FE-6"><a href="#u6548_u679C_u5982_u56FE-6" class="headerlink" title="效果如图"></a>效果如图</h5><p><img src="/image/chart/pie7.png" alt="如图7 "></p>
   
 	</div>
@@ -340,10 +339,10 @@ html:
 <nav class="article-nav clearfix">
  
  <div class="next" >
- <a href="/2016/05/20/20160128-chartjs(bar)/" title="chart.js学习总结之柱状图">
+ <a href="/2016/05/20/20160520-chartjs-line/" title="chart.js学习总结之曲面图（折线图）">
   <strong>NEXT:</strong><br/>
   <span>
-  chart.js学习总结之柱状图</span>
+  chart.js学习总结之曲面图（折线图）</span>
 </a>
 </div>
 
@@ -396,6 +395,10 @@ html:
       </li>
     
       <li>
+        <a href="/2016/05/20/20160520-chartjs-line/">chart.js学习总结之曲面图（折线图）</a>
+      </li>
+    
+      <li>
         <a href="/2016/05/20/20160519-chartjs-pie/">chart.js学习总结之饼状图</a>
       </li>
     
@@ -406,7 +409,7 @@ html:
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">Archives</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li></ul>
   </div>
 
 
